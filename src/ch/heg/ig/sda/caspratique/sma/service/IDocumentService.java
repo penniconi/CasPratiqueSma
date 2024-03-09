@@ -2,7 +2,6 @@ package ch.heg.ig.sda.caspratique.sma.service;
 
 import ch.heg.ig.sda.caspratique.sma.business.Document;
 import ch.heg.ig.sda.caspratique.sma.datastructure.ArrayList;
-import ch.heg.ig.sda.caspratique.sma.business.Unit;
 
 /**
  *
@@ -45,6 +44,12 @@ public interface IDocumentService {
      */
 
     void unitOverview(ArrayList <Document> documentsList);
+
+    /**
+     * F3 = testInsertReading : ajout un document "reading" en format "O" pour catcher l'exception "Invalid Format"
+     */
+
+    void testInsertReading();
 
 
 }

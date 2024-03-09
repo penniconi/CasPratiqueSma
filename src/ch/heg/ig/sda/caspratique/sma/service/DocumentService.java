@@ -128,5 +128,16 @@ public class DocumentService implements IDocumentService {
         System.out.println("Total documents = " + documentsList.size());
     }
 
+    @Override
+    public void testInsertReading() {
+        System.out.println("\n----------------------> Test insert");
+        try {
+            Reading testReading = new Reading(101,getMyUnit(), LocalDate.now(), Document.Format.O,"How to throw an exception","saverio martini",0);
+            getMyUnit().getDocuments().add(testReading);
+        }
+        catch (Exception exception) {
+            System.out.println("\nDocument creation failed: Reading documents must be in PDF!\n");
+        }
+    }
 }
 
