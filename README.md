@@ -1,0 +1,16 @@
+Cas pratique – Partie 2
+J’ai imaginé un cas simple utilisant une structure de données de type List.
+Le contexte est, sans donner épreuve d’immense imagination, la gestion des documents dans le cadre de ma formation.
+La structure de données de base est une simple liste, fournie par l’enseignant et constituée au fil des deux semaines de cours, selon le principe de la généricité, pour accueillir n’importe quel Elément, le tout organisé dans un package : dataStructure où l’on trouve l’interface List et une classe qui l’implémente, nommée ArrayList.
+Dans l’optique d’utiliser la structure – et ses comportements – fournie, j’ai créé des classes de documents propres au domaine ou métier, (package business) lesquelles seront les objets stockés dans la liste.
+En faisant abstraction de tout détail pouvant caractériser les différents types de documents, j’ai conçu une super-classe abstraite Document, laquelle n’est peut pas être instanciée, mais de laquelle toute autre forme de document bénéfice de l’héritage les attributs et comportements de base (id, date de création, format), en ajoutant ses propres, comme on le voit clairement dans le diagramme de classe* en annexe ; le principe du polymorphisme peut être visualisé grâce aux flèches entres les classes Presentation,Reading,Exercice,Solution et leur super-classe Document avec l’indication « extends » : un document peut prendre plusieurs formes, et le comportement de la même méthode toString sera diffèrent pour chacune d’entre elles.
+Le terme Presentation désigne la notion de « support de cours », un Reading c’est juste une lecture (ex. un chapitre d’un livre) et doit être impérativement en PDF, règle implémentée par une exception ad-hoc. Une Solution a comme seul attribut l’Exercice qui corrige et n’a pas de raison d’exister sans lui.
+La logique métier est assez connue : tout document appartient à une et une seule unité d’enseignement (qui elle-même est contenue dans un module, qui fait partie d’une branche etc… aspects volontairement non traités) ; c'est donc l'unité qui agit comme « conteneur » pour les documents = l’attribut principal de la classe Unit est donc un ArrayList de Documents
+L’application principale, ou classe main, se trouve justement dans le package app et pour s’exécuter elle n’a pas besoin d’appeler, (moyennant l’import) toutes les autres classes ; au contraire, il suffit d’importer la classe documentService qui implémente une interface : IDocumentService (de la même maniéré que notre ArrayList fait avec List ; on est devant un exemple d’encapsulation (voir surtout l’attribut privé myUnit et son getter dans le package service) on donne aussi vie à la modularité en subdivisant les différentes couches de notre logiciel.
+Les fonctionnalités que la classe documentService offre comme - justement – services sont :
+Initialiser une unité = remplissage par default de la liste de documents propres à l’unité « SDA ».
+Afficher la totalité des documents assignés à cette unité
+Sortir les documents en format PDF (et donc imprimables)
+Tester une insertion d’une lecture dans un format autre que PDF (insertion refusée)
+Extraire un décompte des différents types de documents présents dans l’unité
+Les méthodes unitInitialize et testInsertReading pourraient également être envisagées comme « créer une unité » et « insérer un document » dans une prochaine version.
