@@ -1,13 +1,14 @@
-package ch.heg.ig.sda.caspratique.sma.business;
+package ch.heg.ig.sda.caspratique.business;
 
 import java.time.LocalDate;
 
-public class Exercice extends Document{
-    private int number;
-    private Presentation presentation;
+public class Exercise extends Document{
+    private final int number;
+    private final Presentation presentation;
 
-    public Exercice(Integer id, Unit unit, LocalDate dateOfCreation, Format format, int number, Presentation presentation) {
-        super(id, unit, dateOfCreation, format);
+    public Exercise(Unit unit, LocalDate dateOfCreation, Format format, int number, Presentation presentation) {
+        super(unit, dateOfCreation, format);
+        this.id = idCount++;
         this.number = number;
         this.presentation = presentation;
     }
@@ -16,24 +17,12 @@ public class Exercice extends Document{
         return number;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public Presentation getPresentation() {
-        return presentation;
-    }
-
-    public void setPresentation(Presentation presentation) {
-        this.presentation = presentation;
-    }
-
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
         sb.append(super.toString());
+        sb.append("\nID: ").append("EX0").append(this.getId());
 
         sb.append("\nNumber: ");
         sb.append(getNumber());

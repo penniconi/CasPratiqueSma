@@ -1,4 +1,4 @@
-package ch.heg.ig.sda.caspratique.sma.datastructure;
+package ch.heg.ig.sda.caspratique.datastructure;
 
 
 
@@ -11,7 +11,7 @@ public class ArrayList<E> implements List<E> {
 
     private static final int DEFAULT_CAPACITY=16;
 
-    private E[] elements; // Tableau pour stocker des Person
+    private final E[] elements; // Tableau pour stocker des Person
     private int size = 0; // Nombre d'éléments
 
     // Constructeurs

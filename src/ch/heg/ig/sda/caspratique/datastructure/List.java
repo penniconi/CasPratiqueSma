@@ -1,4 +1,4 @@
-package ch.heg.ig.sda.caspratique.sma.datastructure;
+package ch.heg.ig.sda.caspratique.datastructure;
 
 
 
